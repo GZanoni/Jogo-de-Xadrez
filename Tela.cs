@@ -12,18 +12,20 @@ namespace Xadrez
 
             for (int i = 0; i < tab.Linhas; i++)
             {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(8 - i + " ");
                 for (int j = 0; j < tab.Colunas; j++)
                 {
-                    if (i == j )
-                   {
+                    if (i == j)
+                    {
                         Console.BackgroundColor = fundoAlt;
 
-                   }
+                    }
                     else if (i % 2 == 0 && j == 0)
                     {
                         Console.BackgroundColor = fundoAlt;
-                    }              
-                  
+                    }
+
                     else if (i % 2 == 1 && j == 1)
                     {
                         Console.BackgroundColor = fundoAlt;
@@ -67,20 +69,34 @@ namespace Xadrez
                     if (tab.peca(i, j) == null)
                     {
                         Console.Write("  ");
-                        
+
                     }
                     else
                     {
-                        Console.Write(tab.peca(i, j) + " ");
+                        ImprimirPecas(tab.peca(i, j));
+                        Console.Write(" ");
                     }
                 }
                 Console.WriteLine();
                 Console.BackgroundColor = fundoOrig;
             }
 
-
-
+            Console.WriteLine("  a b c d e f g h");
         }
 
+        public static void ImprimirPecas(Peca p)
+        {
+            if (p.Cor == Cor.Branca)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(p);
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(p);
+            }
+                        
+        }
     }
 }
