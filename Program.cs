@@ -11,36 +11,32 @@ namespace Xadrez
         {
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 3));
-                tab.ColocarPeca(new Torre(tab, Cor.Branca), new Posicao(0, 0));
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(5, 1));
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(5, 2));
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(5, 3));
+                while (!partida.Terminada)
+                {
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.tab);
 
-                tab.ColocarPeca(new Torre(tab, Cor.Branca), new Posicao(3, 5));
-                tab.ColocarPeca(new Torre(tab, Cor.Branca), new Posicao(3, 2));
-                tab.ColocarPeca(new Torre(tab, Cor.Branca), new Posicao(3, 3));
-                tab.ColocarPeca(new Torre(tab, Cor.Branca), new Posicao(3, 4));
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(2, 0));
+                    
+                    Console.WriteLine();
 
-
-                Tela.ImprimirTabuleiro(tab);
-
-                Console.WriteLine();
+                    Console.Write("Origem: ");
+                    Posicao origem = Tela.LerPosicaoXadrez().toPosicao();
+                    Console.Write("Destino: ");
+                    Posicao destino = Tela.LerPosicaoXadrez().toPosicao();
 
 
-                PosicaoXadrez pos = new PosicaoXadrez('c', 5);
-                Console.WriteLine(pos.toPosicao()); 
+                    partida.ExecutaMovimento(origem, destino);
+
+                }
             }
-
-            catch(TabuleiroException e)
+            catch (TabuleiroException e)
             {
                 Console.WriteLine(e.Message);
             }
 
-            
+
         }
 
     }

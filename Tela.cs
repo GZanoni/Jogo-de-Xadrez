@@ -1,5 +1,6 @@
 ﻿using System;
 using tabuleiro;
+using Jogo_de_Xadrez;
 
 namespace Xadrez
 {
@@ -84,6 +85,14 @@ namespace Xadrez
             Console.WriteLine("  a b c d e f g h");
         }
 
+        public static PosicaoXadrez LerPosicaoXadrez()
+        {
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+            return new PosicaoXadrez(coluna, linha);
+        }
+
         public static void ImprimirPecas(Peca p)
         {
             if (p.Cor == Cor.Branca)
@@ -96,7 +105,8 @@ namespace Xadrez
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(p);
             }
-                        
+
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 }
