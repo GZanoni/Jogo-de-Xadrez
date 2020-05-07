@@ -6,6 +6,8 @@ namespace tabuleiro
     {
         public TabuleiroException(string msg) : base(msg)
         {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
         }
 
     }
