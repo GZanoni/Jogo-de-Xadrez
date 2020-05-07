@@ -1,7 +1,7 @@
 ﻿using Jogo_de_Xadrez;
 using System;
 using tabuleiro;
-using Jogo_de_Xadrez;
+
 
 namespace Xadrez
 {
@@ -20,10 +20,16 @@ namespace Xadrez
 
                     
                     Console.WriteLine();
-
-                    Console.Write("Origem: ");
+                    Console.Write("  ORIGEM: ");
                     Posicao origem = Tela.LerPosicaoXadrez().toPosicao();
-                    Console.Write("Destino: ");
+                    Console.Clear();
+                    
+                    bool[,] PosicoesPossiveis = partida.tab.peca(origem).MovimentosPossiveis();
+                    
+                    Tela.ImprimirTabuleiro(partida.tab, PosicoesPossiveis);
+                    
+                    Console.WriteLine();
+                    Console.Write("  DESTINO: ");
                     Posicao destino = Tela.LerPosicaoXadrez().toPosicao();
 
 

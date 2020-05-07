@@ -6,8 +6,8 @@ namespace Jogo_de_Xadrez
     class PartidaDeXadrez
     {
         public Tabuleiro tab { get; private set; }
-        private int Turno;
-        private Cor JogadorAtual;
+        public int Turno { get; private set; }
+        public Cor JogadorAtual { get; private set; }
         public bool Terminada { get; private set; }
 
         public PartidaDeXadrez()
