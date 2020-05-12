@@ -19,11 +19,8 @@ namespace Xadrez
                     try
                     {
                         Console.Clear();
-                        Tela.ImprimirTabuleiro(partida.tab);
-                        Console.WriteLine();
-                        Console.WriteLine("  TURNO: " + partida.Turno);
-                        Console.WriteLine("  AGUARDANDO JOGADA: " + partida.JogadorAtual);
-
+                        Tela.ImprimirPartida(partida);
+                       
                         Console.WriteLine();
                         Console.Write("  ORIGEM: ");
                         Posicao origem = Tela.LerPosicaoXadrez().toPosicao();

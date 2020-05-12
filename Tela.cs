@@ -1,11 +1,47 @@
 ﻿using Jogo_de_Xadrez;
 using System;
+using System.Collections.Generic;
 using tabuleiro;
 
 namespace Xadrez
 {
     class Tela
     {
+        public static void ImprimirPartida(PartidaDeXadrez partida)
+        {
+            Tela.ImprimirTabuleiro(partida.tab);
+            Console.WriteLine();
+            ImprimirPecasCapturadas(partida);
+            Console.WriteLine();
+            Console.WriteLine("  TURNO: " + partida.Turno);
+            Console.WriteLine("  AGUARDANDO JOGADA: " + partida.JogadorAtual);
+
+
+        }
+
+        public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
+        {
+            Console.WriteLine("  PECAS CAPTURADAS: ");
+            Console.Write("  BRANCAS: ");
+            ImprimirConjunto(partida.pecasCapturadas(Cor.Branca));
+            Console.Write("  PRETAS: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            ImprimirConjunto(partida.pecasCapturadas(Cor.Preta));
+            Console.ForegroundColor = aux;            
+
+        }
+
+        public static void ImprimirConjunto(HashSet<Peca> conjunto)
+        {
+            Console.Write("[ ");
+            foreach (Peca x in conjunto)
+            {
+                Console.Write(x + " ");
+            }
+            Console.WriteLine(" ]");
+        }
+
         public static void ImprimirTabuleiro(Tabuleiro tab)
         {
             ConsoleColor fundoOrig = Console.BackgroundColor;
@@ -87,7 +123,7 @@ namespace Xadrez
         public static void ImprimirTabuleiro(Tabuleiro tab, bool[,] posicosPossiveis)
         {
             ConsoleColor fundoOrig = Console.BackgroundColor;
-            ConsoleColor fundoAlt = ConsoleColor.White;            
+            ConsoleColor fundoAlt = ConsoleColor.White;
 
             ConsoleColor fundoAtual = Console.BackgroundColor;
             ConsoleColor fundoNovo = ConsoleColor.Yellow;
@@ -153,7 +189,7 @@ namespace Xadrez
                     if (posicosPossiveis[i, j])
                     {
                         Console.BackgroundColor = fundoNovo;
-                    }                  
+                    }
 
                     ImprimirPecas(tab.peca(i, j));
                     Console.Write(" ");
