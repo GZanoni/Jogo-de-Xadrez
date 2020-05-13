@@ -15,8 +15,14 @@ namespace Xadrez
             Console.WriteLine();
             Console.WriteLine("  TURNO: " + partida.Turno);
             Console.WriteLine("  AGUARDANDO JOGADA: " + partida.JogadorAtual);
-
-
+            if (partida.Xeque)
+            {
+                ConsoleColor aux = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("  XEQUE!");
+                Console.ForegroundColor = aux;
+            }
+            
         }
 
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
