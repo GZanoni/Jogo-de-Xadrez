@@ -72,6 +72,39 @@ namespace Jogo_de_Xadrez
         }
 
 
+        public bool TesteXequemate(Cor cor)
+        {
+            if (!EstaEmXeque(cor))
+            {
+                return false;
+            }
+            foreach(Peca x in PecasEmJogo(cor))
+            {
+                bool[,] mat = x.MovimentosPossiveis();
+                for(int i=0; i<tab.Linhas; i++)
+                {
+                    for(int j=0; j<tab.Colunas; j++)
+                    {
+                        if (mat[i, j])
+                        {
+                            Posicao origem = x.Posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = ExecutaMovimento(origem, destino);
+                            bool testeXeque = EstaEmXeque(cor);
+                            DesfazMovimento(origem, destino, pecaCapturada);
+                            if (!EstaEmXeque(cor))
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+
+        }
+
+
         public void RetirarPeca(Posicao origem, Posicao destino)
         {
             Peca p = tab.RetirarPeca(origem);
@@ -183,8 +216,16 @@ namespace Jogo_de_Xadrez
                 Xeque = false;
             }
 
-            Turno++;
-            MudaJogador(JogadorAtual);
+            if (TesteXequemate(Adversaria(JogadorAtual)))
+            {
+                Terminada = true;
+            }
+            else
+            {
+                Turno++;
+                MudaJogador(JogadorAtual);
+            }
+            
         }
 
         private void MudaJogador(Cor jogadorAtual)
