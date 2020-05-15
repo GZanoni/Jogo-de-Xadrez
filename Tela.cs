@@ -42,11 +42,11 @@ namespace Xadrez
         {
             Console.WriteLine("  PECAS CAPTURADAS: ");
             Console.Write("  BRANCAS: ");
-            ImprimirConjunto(partida.pecasCapturadas(Cor.Branca));
+            ImprimirConjunto(partida.pecasCapturadas(Cor.BRANCA));
             Console.Write("  PRETAS: ");
             ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Yellow;
-            ImprimirConjunto(partida.pecasCapturadas(Cor.Preta));
+            ImprimirConjunto(partida.pecasCapturadas(Cor.PRETA));
             Console.ForegroundColor = aux;            
 
         }
@@ -238,7 +238,7 @@ namespace Xadrez
             }
             else
             {
-                if (p.Cor == Cor.Branca)
+                if (p.Cor == Cor.BRANCA)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write(p);

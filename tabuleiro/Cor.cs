@@ -2,8 +2,8 @@
 {
     enum Cor
     {
-        Branca,
-        Preta,
+        BRANCA,
+        PRETA,
         Amarela,
         Azul,
         Vermelha,
